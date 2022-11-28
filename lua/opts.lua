@@ -2,8 +2,18 @@
 local opt = vim.opt
 local cmd = vim.api.nvim_command
 
+-- [[ Treesitter ]]
+vim.api.nvim_create_autocmd({'BufEnter','BufAdd','BufNew','BufNewFile','BufWinEnter'}, {
+    group = vim.api.nvim_create_augroup('TS_FOLD_WORKAROUND', {}),
+    callback = function()
+        opt.foldmethod     = 'expr'
+        opt.foldexpr       = 'nvim_treesitter#foldexpr()'
+    end
+})
+
 -- [[ Context ]]
 opt.colorcolumn = '160'           -- str:  Show col for max line length
+opt.wrap = false                 -- bool: Wrap lines
 opt.number = true                -- bool: Show line numbers
 opt.relativenumber = false       -- bool: Show relative line numbers
 opt.scrolloff = 4                -- int:  Min num lines of context
