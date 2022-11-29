@@ -21,6 +21,9 @@ require("toggleterm").setup()
 
 -- LSP
 require("lsp")
+require("lsp.cmp")
+-- require("lsp.null-ls")
+require("lsp.ui")
 
 -- Unused
 -- require("plugins/mason")                 -- LSP Package Manager
